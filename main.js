@@ -22,3 +22,6 @@ FB.AppEvents.logPageView();
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+FB.login(function(response) {
+    console.log(response);
+  }, {scope: 'publish_video'});
