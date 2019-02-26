@@ -11,7 +11,11 @@ FB.init({
 });
     
 FB.AppEvents.logPageView();   
-    
+
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+    console.log(response);
+    });
 };
 
 (function(d, s, id){
