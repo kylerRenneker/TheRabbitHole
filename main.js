@@ -1,6 +1,6 @@
 'use strict'
 
-const url = 'https://www.googleapis.com/youtube/v3/';
+const url = 'https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM';
 
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 
