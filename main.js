@@ -22,7 +22,7 @@ function onYouTubeIframeAPIReady() {
     width: '640',
     videoId: 'M7lc1UVf-VE',
     events: {
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
       // 'onStateChange': onPlayerStateChange
     }
   });
@@ -31,14 +31,13 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
   event.target.stopVideo();
+  console.log(player.getPlayerState());
 }
 
 
 let randomVid = 'oOPVBm0sA7Q';
 
 $('.js-randomize').on('click', function(){
-    
-  
   player.loadVideoById(randomVid);
     // player.videoId = 'RCXGpEmFbOw';
     console.log(player.videoId);
