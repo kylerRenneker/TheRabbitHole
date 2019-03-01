@@ -1,23 +1,69 @@
 'use strict'
 
+const url = 'https://www.googleapis.com/youtube/v3/';
+
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+console.log('created tag: ', tag);
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+console.log('first script tag: ', firstScriptTag);
+console.log('tag inserted above first script tag: ',tag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: 'M7lc1UVf-VE',
+    events: {
+      'onReady': onPlayerReady
+      // 'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.stopVideo();
+}
+
+
+let randomVid = 'oOPVBm0sA7Q';
+
+$('.js-randomize').on('click', function(){
+    
+  
+  player.loadVideoById(randomVid);
+    // player.videoId = 'RCXGpEmFbOw';
+    console.log(player.videoId);
+})
+
 
 
 // Populate dropdown with list of categories
-let dropdown = $('#category-list');
+const dropdown = document.getElementById('category-list');
+dropdown.length = 0;
 
-dropdown.empty();
+const defaultOption = document.createElement('option');
+defaultOption.text = 'All videos';
 
-dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
-dropdown.prop('selectedIndex', 0);
+dropdown.add(defaultOption);
+dropdown.selectedIndex = 0;
 
-const url = 'https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM';
 
 //Not working
 // const options = {
 //     header: new HEADERS({
 //         'X-Api-Key': apiKey}),
 // };
+
+
 
 fetch(url)  
   .then(  
@@ -47,3 +93,22 @@ fetch(url)
   .catch(err => {  
     console.error('Fetch Error -', err);  
   });
+
+
+
+
+  
+
+
+
+
+
+
+  /*
+  When the user hits the randomize button, get the data from the selected dropdown value.
+  Then we're going to want to get a random video based on the value selected by the user.
+        This includes All random videos as well as the different categories. 
+  
+  
+  
+  */ 
