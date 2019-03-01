@@ -4,12 +4,14 @@ const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 
 
 // Populate dropdown with list of categories
-let dropdown = $('#category-list');
+let dropdown = document.getElementById('category-list');
+dropdown.length = 0;
 
-dropdown.empty();
+let defaultOption = document.createElement('option');
+defaultOption.text = 'Choose a Category';
 
-dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
-dropdown.prop('selectedIndex', 0);
+dropdown.add(defaultOption);
+dropdown.selectedIndex = 0;
 
 const url = 'https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM';
 
