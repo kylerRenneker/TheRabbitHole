@@ -1,0 +1,77 @@
+html {
+    box-sizing: border-box;
+  }
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+section, main {
+    text-align: center;
+    max-width: 960px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navLinks {
+    list-style: none;
+}
+
+.navLinks li {
+    display: inline-block;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    margin-right: 15px;
+}
+
+section.landing-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.spc {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* strictly styles for wireframe */
+
+.headIcon {
+    width: 50px;
+    background-color: black;
+}
+
+header {
+    padding: 10px;
+}
+
+iframe {
+    background-color: grey;
+    margin-bottom: 40px;
+}
+
+.landing-page {
+    background-color: #737373;
+}
+
+.howItWorks {
+    background-color: #999999;
+}
+
+main {
+    background-color: #cccccc;
+}
+
+.contact {
+    background-color: #e6e6e6;
+}
