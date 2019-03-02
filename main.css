@@ -10,6 +10,7 @@ section, main {
     max-width: 960px;
     padding-left: 20px;
     padding-right: 20px;
+    margin: 0 auto;
 }
 
 .topHeader {
