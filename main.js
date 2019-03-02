@@ -1,9 +1,7 @@
 'use strict'
 
-let url = 'https://www.googleapis.com/youtube/v3/'
+let url = 'https://www.googleapis.com/youtube/v3/search'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
-
-
 
 
 function playNext(videoId) {
@@ -33,7 +31,7 @@ function loadKeywordSearch() {
 
 function loadIframe() {
 
-  // 2. This code loads the IFrame Player API code asynchronously.
+// 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 // console.log('created tag: ', tag);
 tag.src = "https://www.youtube.com/iframe_api";
@@ -65,6 +63,11 @@ function onPlayerReady(event) {
   console.log(player.getPlayerState());
 }
 
+// function onPlayerStateChange(event){
+//   if (event.data === 5){
+//     playNext();
+//   }
+// }
 
 
 
@@ -79,11 +82,11 @@ function loadDropdown() {
 }*/
 
 $('#category-list').append($(`<option value="0">All videos</option>`));
+}
 
-let url = 'https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM';
 
-
-fetch(url)  
+function getCategories(){
+  fetch('https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM')  
   .then(  
     function(response) {  
       if (response.status !== 200) {  
@@ -113,14 +116,22 @@ let value = $('#category-list').val();
 randomize(value);
 }
 
+function formSubmit(){
+  $('#btn').on('click', function(){
+    event.preventDefault();
+    player.loadVideoById(randomVId);
+      console.log(player.randomVId);
+  })
+}
 
-function startTrip() {
+function loadPage() {
+  getCategories();
+  formSubmit();
   loadIframe();
   loadDropdown();
   onYouTubeIframeAPIReady(); 
-  loadKeywordSearch();
 }
 
 
 
-$(startTrip);
+$(loadPage);
