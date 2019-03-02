@@ -1,22 +1,53 @@
 'use strict'
 
-const url = 'https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM';
-
+let url = 'https://www.googleapis.com/youtube/v3/'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 
-// 2. This code loads the IFrame Player API code asynchronously.
+
+
+
+function playNext(videoId) {
+
+}
+
+function randomize(value) {
+  console.log($('#category-list').val());
+  let randomVid = 'oOPVBm0sA7Q';
+  $('.js-randomize').on('click', function () {
+    player.loadVideoById(randomVid);
+    // player.videoId = 'RCXGpEmFbOw';
+    console.log(player.videoId);
+  })
+   // console.log(value);
+}
+
+function loadKeywordSearch() {
+//api endpoint search
+/*options {
+  q: ${#searchBar}.val(),
+  part: 'snippet',
+  maxResults: 50,
+  key: 'apiKey'
+}*/
+}
+
+function loadIframe() {
+
+  // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
-console.log('created tag: ', tag);
+// console.log('created tag: ', tag);
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-console.log('first script tag: ', firstScriptTag);
-console.log('tag inserted above first script tag: ',tag);
+// console.log('first script tag: ', firstScriptTag);
+// console.log('tag inserted above first script tag: ',tag);
+}
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var player;
+let player;
 function onYouTubeIframeAPIReady() {
+  
   player = new YT.Player('player', {
     height: '390',
     width: '640',
@@ -35,79 +66,61 @@ function onPlayerReady(event) {
 }
 
 
-let randomVid = 'oOPVBm0sA7Q';
-
-$('.js-randomize').on('click', function(){
-  player.loadVideoById(randomVid);
-    // player.videoId = 'RCXGpEmFbOw';
-    console.log(player.videoId);
-})
 
 
+function loadDropdown() {
+//api endpoint videoCategories
+// let query = $(#dropdown).val());          //gotta fix
+/*options {
+  q: query,
+  part: 'snippet',
+  regionCode: 'US'
+  key: 'apiKey'
+}*/
 
-// Populate dropdown with list of categories
-const dropdown = document.getElementById('category-list');
-dropdown.length = 0;
+$('#category-list').append($(`<option value="0">All videos</option>`));
 
-const defaultOption = document.createElement('option');
-defaultOption.text = 'All videos';
-
-dropdown.add(defaultOption);
-dropdown.selectedIndex = 0;
-
-
-//Not working
-// const options = {
-//     header: new HEADERS({
-//         'X-Api-Key': apiKey}),
-// };
-
+let url = 'https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM';
 
 
 fetch(url)  
   .then(  
     function(response) {  
       if (response.status !== 200) {  
-        console.warn('Looks like there was a problem. Status Code: ' + 
-          response.status);  
+        console.warn('Looks like there was a problem. Status Code: ' + response.status);  
         return;  
       }
-
-      // Examine the text in the response  
-      response.json().then(data => {  
-        let option;
-        // console.log(data.items[1].id);
-        // console.log(data.items[1].snippet.title)
-        // console.log(data.items.length)
+// Examine the text in the response  
+      response.json()
+      .then(data => {  
+// console.log(data.items[1].id);
+// console.log(data.items[1].snippet.title)
+// console.log(data.items.length)
     
-    	for (let i = 0; i < data.items.length; i++) {
-          option = document.createElement('option');
-      	  option.text = data.items[i].snippet.title;
-      	  option.value = data.items[i].id;
-      	  dropdown.add(option);
+    	for (let i = 1; i < data.items.length; i++) {
+      	let text = data.items[i].snippet.title;
+      	let value = data.items[i].id;
+        $('#category-list').append(`<option value=${value}>${text}</option>`)   
     	}    
       });  
     }  
   )  
-  .catch(err => {  
+.catch(err => {  
     console.error('Fetch Error -', err);  
-  });
+});
+
+let value = $('#category-list').val();
+randomize(value);
+}
+
+
+function startTrip() {
+  loadIframe();
+  loadDropdown();
+  onYouTubeIframeAPIReady(); 
+  loadKeywordSearch();
+}
 
 
 
-
-  
-
-
-
-
-
-
-  /*
-  When the user hits the randomize button, get the data from the selected dropdown value.
-  Then we're going to want to get a random video based on the value selected by the user.
-        This includes All random videos as well as the different categories. 
-  
-  
-  
-  */ 
+$(startTrip);
