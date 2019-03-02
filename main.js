@@ -1,11 +1,25 @@
 'use strict'
 
-let url = 'https://www.googleapis.com/youtube/v3/search'
+const baseURL = 'https://www.googleapis.com/youtube/v3/search'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 
+function formatQueryParams(params) {
+  const queryItems = Object.keys(params)
+  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+  return queryItems.join('&');
+}
 
-function playNext(videoId) {
+function playNext(category) {
+  const params = {
+    key: apiKey,
+    part: 'snippet',
+    videoCategoryId: category,
+    chart: 'mostPopular'
+  }
 
+  console.log(formatQueryParams(params));
+  const queryString = formatQueryParams(params)
+  const url = baseURL + '?' + queryString;
 }
 
 function randomize(value) {
@@ -13,39 +27,21 @@ function randomize(value) {
   let randomVid = 'oOPVBm0sA7Q';
   $('.js-randomize').on('click', function () {
     player.loadVideoById(randomVid);
-    // player.videoId = 'RCXGpEmFbOw';
     console.log(player.videoId);
   })
-   // console.log(value);
-}
-
-function loadKeywordSearch() {
-//api endpoint search
-/*options {
-  q: ${#searchBar}.val(),
-  part: 'snippet',
-  maxResults: 50,
-  key: 'apiKey'
-}*/
 }
 
 function loadIframe() {
-
-// 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-// console.log('created tag: ', tag);
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// console.log('first script tag: ', firstScriptTag);
-// console.log('tag inserted above first script tag: ',tag);
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 let player;
 function onYouTubeIframeAPIReady() {
-  
   player = new YT.Player('player', {
     height: '390',
     width: '640',
@@ -63,27 +59,9 @@ function onPlayerReady(event) {
   console.log(player.getPlayerState());
 }
 
-// function onPlayerStateChange(event){
-//   if (event.data === 5){
-//     playNext();
-//   }
-// }
-
-
-
 function loadDropdown() {
-//api endpoint videoCategories
-// let query = $(#dropdown).val());          //gotta fix
-/*options {
-  q: query,
-  part: 'snippet',
-  regionCode: 'US'
-  key: 'apiKey'
-}*/
-
 $('#category-list').append($(`<option value="0">All videos</option>`));
 }
-
 
 function getCategories(){
   fetch('https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM')  
@@ -95,32 +73,25 @@ function getCategories(){
       }
 // Examine the text in the response  
       response.json()
-      .then(data => {  
-// console.log(data.items[1].id);
-// console.log(data.items[1].snippet.title)
-// console.log(data.items.length)
-    
-    	for (let i = 1; i < data.items.length; i++) {
-      	let text = data.items[i].snippet.title;
-      	let value = data.items[i].id;
-        $('#category-list').append(`<option value=${value}>${text}</option>`)   
-    	}    
+      .then(data => { 
+      	for (let i = 1; i < data.items.length; i++) {
+          let text = data.items[i].snippet.title;
+          let value = data.items[i].id;
+          $('#category-list').append(`<option value=${value}>${text}</option>`)   
+    	  }    
       });  
     }  
   )  
-.catch(err => {  
-    console.error('Fetch Error -', err);  
-});
-
-let value = $('#category-list').val();
-randomize(value);
+  .catch(err => {  
+      console.error('Fetch Error -', err);  
+  });
 }
 
 function formSubmit(){
-  $('#btn').on('click', function(){
+  $('form').on('submit', function(event){
     event.preventDefault();
-    player.loadVideoById(randomVId);
-      console.log(player.randomVId);
+    let category = $('#category-list').val();
+    playNext(category);
   })
 }
 
@@ -129,9 +100,7 @@ function loadPage() {
   formSubmit();
   loadIframe();
   loadDropdown();
-  onYouTubeIframeAPIReady(); 
+  // onYouTubeIframeAPIReady(); 
 }
-
-
 
 $(loadPage);
