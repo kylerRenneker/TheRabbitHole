@@ -74,7 +74,6 @@ function formSubmit(){
   $('#btn').on('click', function(){
     event.preventDefault();
     player.loadVideoById(randomVid);
-      // player.videoId = 'RCXGpEmFbOw';
       console.log(player.videoId);
     })
 }
