@@ -105,7 +105,7 @@ function formSubmit(){
 function loadPage() {
   formSubmit();
   loadIframe();
-  loadDropdown();
+
 }
 
 $(loadPage);
