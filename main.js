@@ -1,6 +1,6 @@
 'use strict'
 
-const baseURL = 'https://www.googleapis.com/youtube/v3/search'
+const baseURL = 'https://www.googleapis.com/youtube/v3/videos'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 
 function formatQueryParams(params) {
@@ -11,16 +11,26 @@ function formatQueryParams(params) {
 
 function playNext(category) {
   const params = {
-    key: apiKey,
-    part: 'snippet',
-    videoCategoryId: category,
-    chart: 'mostPopular'
+  
+    'part': 'snippet',
+    'videoCategoryId': category,
+    chart: 'mostPopular',
+    'regionCode': 'US',
+    'key': apiKey,
+    'maxResults': '50'
   }
 
   console.log(formatQueryParams(params));
   const queryString = formatQueryParams(params)
   const url = baseURL + '?' + queryString;
-}
+
+  fetch(url)
+  .then (response => {response.ok
+    if (response.ok){
+      return response.json();
+    }
+    throw new Error (response.statusText);
+})
 
 function randomize(value) {
   console.log($('#category-list').val());
@@ -63,7 +73,7 @@ function loadDropdown() {
 $('#category-list').append($(`<option value="0">All videos</option>`));
 }
 
-function getCategories(){
+function getCategories(){ //remove or hide 30-44
   fetch('https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM')  
   .then(  
     function(response) {  
