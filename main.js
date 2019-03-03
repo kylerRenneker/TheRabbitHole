@@ -2,7 +2,9 @@
 
 const baseURL = 'https://www.googleapis.com/youtube/v3/videos'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
-let returnVideos=[];
+const token = {
+  nextPage: ''
+}
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -24,8 +26,8 @@ function fetchVideos(category) {
     chart: 'mostPopular',
     regionCode: 'US',
     key: apiKey,
-    maxResults: '50',
-    pageToken: ''
+    maxResults: '1',
+    pageToken: token.nextPage
   }
 
 
@@ -36,18 +38,17 @@ function fetchVideos(category) {
   console.log(url);
 
   fetch(url)
-  .then (response => {response.ok
+  .then (response => {
     if (response.ok){
       return response.json();
     }
-    throw new Error (response.statusText);
+    console.log(response.err)
+    throw new Error (response.error.message);
 })
   // .then(responseJson => getNextPage(responseJson))
   .then(responseJson => {
-      params.pageToken = responseJson.nextPageToken;
-      console.log(params.pageToken);
-      returnVideos = responseJson.items;
-      getRandomId(returnVideos)
+      token.nextPage = responseJson.nextPageToken;
+      getRandomId(responseJson)
     })
   .catch(err => {
     alert(`Something went wrong: ${err.message}`);
@@ -81,8 +82,7 @@ function onYouTubeIframeAPIReady() {
     width: '640',
     videoId: 'M7lc1UVf-VE',
     events: {
-      'onReady': onPlayerReady,
-      // 'onStateChange': onPlayerStateChange
+      'onReady': onPlayerReady
     }
   });
 }
@@ -109,6 +109,3 @@ function loadPage() {
 }
 
 $(loadPage);
-
-
-
