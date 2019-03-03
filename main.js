@@ -2,6 +2,7 @@
 
 const baseURL = 'https://www.googleapis.com/youtube/v3/videos'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
+let returnVideos=[];
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -9,7 +10,14 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-function getNextVideoInfo(category) {
+function getNextVideoInfo(category){
+ if (returnVideos.length === 0){
+  fetchVideos(category);
+ }else{
+   getRandomId(returnVideos);
+ }
+}
+function fetchVideos(category) {
   const params = {
     part: 'snippet',
     videoCategoryId: category,
@@ -17,8 +25,9 @@ function getNextVideoInfo(category) {
     regionCode: 'US',
     key: apiKey,
     maxResults: '50',
-    pageToken: 'CDIGAA'
+    pageToken: ''
   }
+
 
   console.log(formatQueryParams(params));
   const queryString = formatQueryParams(params)
@@ -37,19 +46,19 @@ function getNextVideoInfo(category) {
   .then(responseJson => {
       params.pageToken = responseJson.nextPageToken;
       console.log(params.pageToken);
-      getRandomId(responseJson)
+      returnVideos = responseJson.items;
+      getRandomId(returnVideos)
     })
   .catch(err => {
     alert(`Something went wrong: ${err.message}`);
   })
 }
 
-function getRandomId(responseJson) {
-  console.log(responseJson);
-  let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
-  console.log(randomItem);
+function getRandomId(returnVideos) {
+  let randomIndex = Math.floor(Math.random() * returnVideos.length);
+  let randomItem = returnVideos[randomIndex];
+  returnVideos.splice(randomIndex,1);
   playNext(randomItem);
-  console.log(responseJson.nextPageToken)
 }
 
 function playNext(randomVideo) {
