@@ -31,6 +31,7 @@ function playNext(category) {
     }
     throw new Error (response.statusText);
 })
+}
 
 function randomize(value) {
   console.log($('#category-list').val());
