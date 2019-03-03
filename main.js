@@ -86,34 +86,6 @@ function onPlayerReady(event) {
   console.log(player.getPlayerState());
 }
 
-function loadDropdown() {
-$('#category-list').append($(`<option value="0">All videos</option>`));
-}
-
-function getCategories(){ //remove or hide 30-44
-  fetch('https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM')  
-  .then(  
-    function(response) {  
-      if (response.status !== 200) {  
-        console.warn('Looks like there was a problem. Status Code: ' + response.status);  
-        return;  
-      }
-// Examine the text in the response  
-      response.json()
-      .then(data => { 
-      	for (let i = 1; i < data.items.length; i++) {
-          let text = data.items[i].snippet.title;
-          let value = data.items[i].id;
-          $('#category-list').append(`<option value=${value}>${text}</option>`)   
-    	  }    
-      });  
-    }  
-  )  
-  .catch(err => {  
-      console.error('Fetch Error -', err);  
-  });
-}
-
 function formSubmit(){
   $('form').on('submit', function(event){
     event.preventDefault();
@@ -123,11 +95,8 @@ function formSubmit(){
 }
 
 function loadPage() {
-  getCategories();
   formSubmit();
   loadIframe();
-  loadDropdown();
 }
 
 $(loadPage);
-
