@@ -12,7 +12,14 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-function getNextVideoInfo(category) {
+function getNextVideoInfo(category){
+ if (returnVideos.length === 0){
+  fetchVideos(category);
+ }else{
+   getRandomId(returnVideos);
+ }
+}
+function fetchVideos(category) {
   const params = {
     part: 'snippet',
     videoCategoryId: category,
@@ -22,6 +29,7 @@ function getNextVideoInfo(category) {
     maxResults: '1',
     pageToken: token.nextPage
   }
+
 
   console.log(formatQueryParams(params));
   const queryString = formatQueryParams(params)
@@ -47,12 +55,11 @@ function getNextVideoInfo(category) {
   })
 }
 
-function getRandomId(responseJson) {
-  console.log(responseJson);
-  let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
-  console.log(randomItem);
+function getRandomId(returnVideos) {
+  let randomIndex = Math.floor(Math.random() * returnVideos.length);
+  let randomItem = returnVideos[randomIndex];
+  returnVideos.splice(randomIndex,1);
   playNext(randomItem);
-  console.log(responseJson.nextPageToken)
 }
 
 function playNext(randomVideo) {
@@ -86,33 +93,6 @@ function onPlayerReady(event) {
   console.log(player.getPlayerState());
 }
 
-function loadDropdown() {
-$('#category-list').append($(`<option value="0">All videos</option>`));
-}
-
-function getCategories(){ //remove or hide 30-44
-  fetch('https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM')  
-  .then(  
-    function(response) {  
-      if (response.status !== 200) {  
-        console.warn('Looks like there was a problem. Status Code: ' + response.status);  
-        return;  
-      }
-// Examine the text in the response  
-      response.json()
-      .then(data => { 
-      	for (let i = 1; i < data.items.length; i++) {
-          let text = data.items[i].snippet.title;
-          let value = data.items[i].id;
-          $('#category-list').append(`<option value=${value}>${text}</option>`)   
-    	  }    
-      });  
-    }  
-  )  
-  .catch(err => {  
-      console.error('Fetch Error -', err);  
-  });
-}
 
 function formSubmit(){
   $('form').on('submit', function(event){
@@ -123,11 +103,9 @@ function formSubmit(){
 }
 
 function loadPage() {
-  getCategories();
   formSubmit();
   loadIframe();
-  loadDropdown();
+
 }
 
 $(loadPage);
-
