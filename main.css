@@ -5,6 +5,10 @@ html {
     box-sizing: inherit;
 }
 
+  #player {
+      max-width: 100%;
+  }
+
 section, main {
     text-align: center;
     max-width: 960px;
@@ -84,3 +88,4 @@ main {
 .contact {
     background-color: #e6e6e6;
 }
+

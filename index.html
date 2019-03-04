@@ -33,19 +33,41 @@
       platea dictumst. Mauris interdum ut quam sed volutpat.</p>
   </section>
   <main class="spc">
-    <iframe src="" frameborder="0"></iframe>
-    <form action="#">
-      <select name="" id="">
-        <option value="">All videos</option>
-        <option value="">Funny</option>
-        <option value="">Animals</option>
-      </select>
-      <button>Randomize</button>
-    </form>
+    <div id="player"></div>
+          <form>
+            <fieldset>
+              <legend>Random Video</legend>
+                  <label>Select list</label>
+                  <select id="category-list">
+                      <option value="0">All videos</option>
+                  <option value="2">Autos &amp; Vehicles</option>
+                  <option value="10">Music</option>
+                  <option value="15">Pets &amp; Animals</option>
+                  <option value="17">Sports</option>
+                  <!-- <option value="18">Short Movies</option> -->
+                  <!-- <option value="19">Travel &amp; Events</option> -->
+                  <option value="20">Gaming</option>
+                  <!-- <option value="21">Videoblogging</option> -->
+                  <!-- <option value="22">People &amp; Blogs</option> -->
+                  <option value="23">Comedy</option>
+                  <option value="24">Entertainment</option>
+                  <!-- <option value="25">News &amp; Politics</option> -->
+                  <!-- <option value="26">Howto &amp; Style</option> -->
+                  <!-- <option value="27">Education</option> -->
+                  <option value="28">Science &amp; Technology</option>
+                  </select>
+                  <button id="btn">Random</button>
+            </fieldset>
+         </form>
   </main>
   <section class="contact spc">
     <h2>Contact us with user feedback!</h2>
     <button>Email</button>
   </section>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="main.js"></script>
 </body>
 </html>
