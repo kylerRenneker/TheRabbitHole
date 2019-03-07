@@ -52,8 +52,6 @@ function getNextVideoInfo(category) {
   })
 }
 
-
-
 function getRandomId(responseJson) {
   console.log(responseJson);
   let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
@@ -69,7 +67,6 @@ function onPageLoad(){
 function renderVideoHtml(){
   $('#video').html(`<embed id="video" src="${videoURL + id.newId}" wmode="transparent" type="application/x-shockwave-flash" width="420" height="315" allowfullscreen="true" title="Adobe Flash Player">`);
 }  
-
 
 function loadNewVideo(){
   $('form').on('submit',function(event){
