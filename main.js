@@ -1,14 +1,9 @@
 'use strict'
 
-const baseURL ='https://www.googleapis.com/youtube/v3/videos';
-const videoURL = 'https://www.youtube.com/v/'
+const baseURL = 'https://www.googleapis.com/youtube/v3/videos'
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 const token = {
   nextPage: ''
-}
-
-const id = {
-  newId:''
 }
 
 function formatQueryParams(params) {
@@ -55,25 +50,53 @@ function getNextVideoInfo(category) {
 function getRandomId(responseJson) {
   console.log(responseJson);
   let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
-  console.log(randomItem.id);
-  id.newId = randomItem.id;
-  renderVideoHtml();
+  console.log(randomItem);
+  playNext(randomItem);
+  console.log(responseJson.nextPageToken)
 }
 
-function onPageLoad(){
-    loadNewVideo();
+function playNext(randomVideo) {
+  player.loadVideoById(randomVideo.id);
 }
-  
-function renderVideoHtml(){
-  $('#video').html(`<embed id="video" src="${videoURL + id.newId}" wmode="transparent" type="application/x-shockwave-flash" width="420" height="315" allowfullscreen="true" title="Adobe Flash Player">`);
-}  
 
-function loadNewVideo(){
-  $('form').on('submit',function(event){
+function loadIframe() {
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+let player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: 'EB0MhyGeCyw',
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.stopVideo();
+  console.log(player.getPlayerState());
+}
+
+function formSubmit(){
+  $('form').on('submit', function(event){
     event.preventDefault();
     let category = $('#category-list').val();
     getNextVideoInfo(category);
   })
 }
 
-$(onPageLoad)
+function loadPage() {
+  formSubmit();
+  loadIframe();
+}
+
+$(loadPage);
