@@ -1,15 +1,15 @@
 'use strict'
 
 const baseURL ='https://www.googleapis.com/youtube/v3/videos';
-
+const videoURL = 'https://www.youtube.com/v/';
 const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
 const token = {
   nextPage: ''
 }
 
-// const id = {
-//   newId:''
-// }
+const id = {
+  newId:''
+}
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -56,19 +56,16 @@ function getRandomId(responseJson) {
   console.log(responseJson);
   let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
   console.log(randomItem.id);
-  let newId = randomItem.id;
-  console.log('newId', newId);
-  renderVideoHtml(newId);
+  id.newId = randomItem.id;
+  renderVideoHtml();
 }
 
 function onPageLoad(){
     loadNewVideo();
 }
   
-function renderVideoHtml(newId){
-  
-  const videoURL = 'https://www.youtube.com/v/';
-  $('#video').html(`<embed id="video" src="${videoURL + newId}" wmode="transparent" type="application/x-shockwave-flash" width="420" height="315" allowfullscreen="true" title="Adobe Flash Player">`);
+function renderVideoHtml(){
+  $('#video').html(`<embed src="${videoURL + id.newId}" wmode="transparent" type="application/x-shockwave-flash" width="420" height="315" allowfullscreen="true" title="Adobe Flash Player">`);
 }  
 
 function loadNewVideo(){
