@@ -52,13 +52,15 @@ function getNextVideoInfo(category) {
     })
 }
 
-
-
 function getRandomId(responseJson) {
   console.log(responseJson);
   let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
-  console.log(randomItem.id);
-  id.newId = randomItem.id;
+  if(responseJson.kind === 'youtube#searchListResponse'){
+    id.newId = randomItem.id.videoId;
+  }
+  else {
+    id.newId = randomItem.id;
+  }
   renderVideoHtml();
   console.log(id.newId)
 }
@@ -66,7 +68,6 @@ function getRandomId(responseJson) {
 function renderVideoHtml() {
   $('#video').html(`<embed id="video" src="${videoURL + id.newId}" wmode="transparent" type="application/x-shockwave-flash" allowfullscreen="true" title="Adobe Flash Player">`);
 }
-
 
 function loadNewVideo() {
   $('#dropdown').on('submit', function (event) {
