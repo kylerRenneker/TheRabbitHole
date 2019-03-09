@@ -42,7 +42,6 @@ function getNextVideoInfo(category) {
       console.log(response.err)
       throw new Error(response.error.message);
     })
-    // .then(responseJson => getNextPage(responseJson))
     .then(responseJson => {
       token.nextPage = responseJson.nextPageToken;
       getRandomId(responseJson)
