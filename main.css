@@ -1,5 +1,6 @@
-/* html {
+ html {
     box-sizing: border-box;
+    font-size: 10px;
 }
 
 *,
@@ -8,22 +9,11 @@
     box-sizing: inherit;
 }
 
-#player {
-    max-width: 100%;
-}
-
-section,
-main {
-    text-align: center;
-    max-width: 960px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 0 auto;
-}
-
 .topHeader {
     display: flex;
     justify-content: space-between;
+    background: rgba(0,0,0,0.7);
+    align-items: center;
 }
 
 .navLinks {
@@ -36,56 +26,18 @@ main {
 
 .nav-link {
     text-decoration: none;
-    color: black;
-    margin-right: 5px;
-}
-
-section.landing-page {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.spc {
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+    color: white;
+    margin-right: 10px;
+    font-size: 1.8rem;
+} 
 
 /* strictly styles for wireframe */
 
-/* .headIcon {
+ .headIcon {
     width: 50px;
-    background-color: black;
+    height: 50px;
+    background-color: white;
 }
-
-header {
-    padding: 10px;
-}
-
-.landing-page {
-    background-color: #737373;
-}
-
-.howItWorks {
-    background-color: #999999;
-}
-
-main {
-    background-color: #cccccc;
-}
-
-.contact {
-    background-color: #e6e6e6;
-} */
 
 * {
     margin: 0;
@@ -96,47 +48,9 @@ body {
     background: #333133;
     color: #dddddd;
     line-height: 1.6;
-    height: 100vh;
 }
 
-
-.container {
-    width: 100%;
-    height: 100vh;
-}
-
-/* Navigation */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    width: 100%;
-    height: 60px;
-    background: rgba(0,0,0,0.7);
-}
-
-.navbar ul {
-    display: flex;
-    list-style: none;
-    width: 100%;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.navbar ul li {
-    margin: 0 1rem;
-    padding: 1rem;
-}
-
-.navbar ul li a{
-    text-decoration: none;
-    text-transform: uppercase;
-    color: rgb(230, 230, 253)
-}
-
-.navbar ul li a:hover{
+.nav-link:hover{
     color: goldenrod;
 }
 
@@ -147,8 +61,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100vh;
 }
 
 section h1 {
@@ -164,18 +76,12 @@ section p {
 }
 
 footer {
-    width: 100%;
-    height: 60px;
     background: rgb(0,0,0);
 }
 
 footer p {
     font-size: 1.11rem;
     text-align: center;
-}
-
-#contact {
-    height: 50vh;
 }
 
 #landing-page {
@@ -197,10 +103,11 @@ button {
 }
 
 #video embed {
-    min-width: 420px;
-    min-height: 315px;
-    max-width: 80%;
-    max-height: 80%;
-    width:90%;
-    height:450px;
+    width: 420px;
+    height: 315px;
+ 
+}
+
+section#landing-page {
+    background: url('/images/stairs.jpg') no-repeat center center/cover
 }
