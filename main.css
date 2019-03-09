@@ -9,11 +9,16 @@
     box-sizing: inherit;
 }
 
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
 .topHeader {
     display: flex;
     justify-content: space-between;
     background: rgba(0,0,0,0.7);
     align-items: center;
+    padding: 10px;
 }
 
 .navLinks {
@@ -28,20 +33,13 @@
     text-decoration: none;
     color: white;
     margin-right: 10px;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 } 
 
-/* strictly styles for wireframe */
-
  .headIcon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: white;
-}
-
-* {
-    margin: 0;
-    padding: 0;
 }
 
 body {
@@ -55,39 +53,62 @@ body {
 }
 
 /* Sections */
-
-
-section {
-    display: flex;
-    flex-direction: column;
+#landing-page {
+    height: 90vh;
+    background-image: url(images/stairs.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
     align-items: center;
+    grid-template-rows: 45% 10% 45%;
 }
 
-section h1 {
+section {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#welcomeHead {
+    align-self: end;
+}
+
+#slogan {
+    align-self: start;
+}
+
+.headerRule {
+    border-top: 1px solid #8c8b8b;
+}
+
+h1 {
     font-size: 4rem;
 }
 
-section h2 {
-    font-size: 2rem;
+h2 {
+    font-size: 2.4rem;
 }
 
-section p {
-    font-size: 1.2rem;
+p {
+    font-size: 1.6rem;
 }
 
 footer {
     background: rgb(0,0,0);
-}
-
-footer p {
     font-size: 1.11rem;
     text-align: center;
+
+footer p {
+    margin-bottom: 0;
 }
 
-#landing-page {
-    align-items: center;
-    justify-content: center;
+#landing-page, section h2 {
     text-align: center;
+}
+
+#contact, #howItWorks {
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* buttons */
@@ -97,17 +118,12 @@ button {
     font-size: 1em;
 }
 
-
 #video {
-    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #video embed {
-    width: 420px;
-    height: 315px;
- 
-}
-
-section#landing-page {
-    background: url('/images/stairs.jpg') no-repeat center center/cover
+    width: 320px;
+    height: 280px;
 }
