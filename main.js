@@ -1,19 +1,19 @@
 'use strict'
 
-const baseURL ='https://www.googleapis.com/youtube/v3/videos';
+const baseURL = 'https://www.googleapis.com/youtube/v3/videos';
 const videoURL = 'https://www.youtube.com/v/'
-const apiKey = 'AIzaSyAhui6AUkhaT17er7V3Q1kwvmHV_kSdumM'
+const apiKey = 'AIzaSyCtiVFVUXm6cOL5PjFl64liwXOOkTYG9FA'
 const token = {
   nextPage: ''
 }
 
 const id = {
-  newId:''
+  newId: ''
 }
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
-  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
   return queryItems.join('&');
 }
 
@@ -35,21 +35,21 @@ function getNextVideoInfo(category) {
   console.log(url);
 
   fetch(url)
-  .then (response => {
-    if (response.ok){
-      return response.json();
-    }
-    console.log(response.err)
-    throw new Error (response.error.message);
-})
-  // .then(responseJson => getNextPage(responseJson))
-  .then(responseJson => {
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      console.log(response.err)
+      throw new Error(response.error.message);
+    })
+    // .then(responseJson => getNextPage(responseJson))
+    .then(responseJson => {
       token.nextPage = responseJson.nextPageToken;
       getRandomId(responseJson)
     })
-  .catch(err => {
-    alert(`Something went wrong: ${err.message}`);
-  })
+    .catch(err => {
+      alert(`Something went wrong: ${err.message}`);
+    })
 }
 
 
@@ -60,23 +60,25 @@ function getRandomId(responseJson) {
   console.log(randomItem.id);
   id.newId = randomItem.id;
   renderVideoHtml();
+  console.log(id.newId)
 }
 
-function onPageLoad(){
-    loadNewVideo();
+function renderVideoHtml() {
+  $('#video').html(`<embed id="video" src="${videoURL + id.newId}" wmode="transparent" type="application/x-shockwave-flash" allowfullscreen="true" title="Adobe Flash Player">`);
 }
-  
-function renderVideoHtml(){
-  $('#video').html(`<embed id="video" src="${videoURL + id.newId}" wmode="transparent" type="application/x-shockwave-flash" width="420" height="315" allowfullscreen="true" title="Adobe Flash Player">`);
-}  
 
 
-function loadNewVideo(){
-  $('form').on('submit',function(event){
+function loadNewVideo() {
+  $('#dropdown').on('submit', function (event) {
     event.preventDefault();
-    let category = $('#category-list').val();
-    getNextVideoInfo(category);
+      let category = $('#category-list').val();
+      getNextVideoInfo(category);
   })
+}
+
+function onPageLoad() {
+  loadNewVideo();
+  // loadSearchVideo();
 }
 
 $(onPageLoad)
