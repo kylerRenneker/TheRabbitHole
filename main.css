@@ -185,6 +185,9 @@ button {
     height: 280px;
 }
 
+#contact {
+    text-align: center;
+}
 @media only screen and (max-width: 766px){
     .mobile-nav-links{
         position: absolute;
