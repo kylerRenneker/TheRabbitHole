@@ -30,16 +30,31 @@ h1,h2,h3,h4,h5,h6{
     top: -100px;
     transition: all 0.3s;
 }
-/* rgba(0,0,0,0.7) */
 
-.sticky {
-    top: 0;
-    background: rgba(0,0,0,0.7);
+ul.navLinks {
+    display: none;
+    padding-left: 0;
+    text-align: center;
 }
 
-.mobile-nav {
-    display: none;
+ .sticky {
+    top: 0;
+    background: rgba(0,0,0,0.7);
+    height: 60px;
+    z-index: 1;
+} 
 
+.mobile-nav {
+    font-size: 20px;
+    position: absolute;
+    right: 22px;
+    top: 0;
+    width: 30px;
+    padding-top: 20px;
+}
+
+.mobile-navbar {
+    display: block;
 }
 
 span {
@@ -59,10 +74,6 @@ a {
     list-style: none;
 }
 
-.navLinks li {
-    display: inline-block;
-}
-
 .nav-link {
     text-decoration: none;
     color: white;
@@ -71,6 +82,8 @@ a {
 } 
 
  .headIcon {
+    position: absolute;
+    top: 10px;
     width: 40px;
     height: 40px;
     background-color: white;
@@ -170,4 +183,46 @@ button {
 #video embed {
     width: 320px;
     height: 280px;
+}
+
+@media only screen and (max-width: 766px){
+    .mobile-nav-links{
+        position: absolute;
+        top: 50px;
+        left: 25%;
+        right: 25%;
+    }
+
+    .mobile-li {
+        display: block;
+    }
+
+    .open-nav {
+        display: block !important;
+    }
+    
+    .nav-on-click{
+        height: 180px;
+    }
+    
+}
+
+@media only screen and (min-width: 766px){
+    .mobile-nav {
+        display: none;
+    }
+
+    nav.navbar {
+        position: absolute;
+        right: 0;
+    }
+
+    .navLinks {
+        display: block !important;
+    }
+
+    .navLinks li {
+        display: inline-block;
+    }
+
 }
