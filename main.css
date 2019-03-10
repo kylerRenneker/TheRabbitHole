@@ -9,6 +9,12 @@
     box-sizing: inherit;
 }
 
+body {
+    background: #333133;
+    color: #dddddd;
+    line-height: 1.6;
+}
+
 h1,h2,h3,h4,h5,h6{
     margin: 0;
 }
@@ -16,9 +22,37 @@ h1,h2,h3,h4,h5,h6{
 .topHeader {
     display: flex;
     justify-content: space-between;
-    background: rgba(0,0,0,0.7);
+    background: none;
     align-items: center;
     padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: -100px;
+    transition: all 0.3s;
+}
+/* rgba(0,0,0,0.7) */
+
+.sticky {
+    top: 0;
+    background: rgba(0,0,0,0.7);
+}
+
+.mobile-nav {
+    display: none;
+
+}
+
+span {
+    width: 30px;
+    height: 4px;
+    margin-bottom: 6px;
+    border-radius: 1000px;
+    background: white;
+    display: block;
+}
+
+a {
+    cursor: pointer;
 }
 
 .navLinks {
@@ -42,19 +76,13 @@ h1,h2,h3,h4,h5,h6{
     background-color: white;
 }
 
-body {
-    background: #333133;
-    color: #dddddd;
-    line-height: 1.6;
-}
-
 .nav-link:hover{
     color: goldenrod;
 }
 
 /* Sections */
 #landing-page {
-    height: 90vh;
+    height: 100vh;
     background-image: url(images/stairs.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -62,6 +90,21 @@ body {
     display: grid;
     align-items: center;
     grid-template-rows: 45% 10% 45%;
+    background-attachment: fixed;
+}
+
+#landing-page h2 {
+    position: relative;
+}
+
+#landing-page h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    height: 2px;
+    width: 100%;
+    background-image: linear-gradient(to right, transparent 0%, #000 20%, #000 50%, #000 80%, transparent 100%);
 }
 
 section {
@@ -97,6 +140,7 @@ footer {
     background: rgb(0,0,0);
     font-size: 1.11rem;
     text-align: center;
+}
 
 footer p {
     margin-bottom: 0;
