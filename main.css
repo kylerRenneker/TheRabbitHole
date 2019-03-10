@@ -10,7 +10,7 @@
 }
 
 body {
-    background: #333133;
+    /* background: #333133; */
     color: #dddddd;
     line-height: 1.6;
 }
@@ -19,9 +19,7 @@ h1,h2,h3,h4,h5,h6{
     margin: 0;
 }
 
-.topHeader {
-    display: flex;
-    justify-content: space-between;
+.top-header {
     background: none;
     align-items: center;
     padding: 10px;
@@ -31,7 +29,7 @@ h1,h2,h3,h4,h5,h6{
     transition: all 0.3s;
 }
 
-ul.navLinks {
+ul.nav-links {
     display: none;
     padding-left: 0;
     text-align: center;
@@ -70,7 +68,7 @@ a {
     cursor: pointer;
 }
 
-.navLinks {
+.nav-links {
     list-style: none;
 }
 
@@ -81,7 +79,7 @@ a {
     font-size: 1.6rem;
 } 
 
- .headIcon {
+ .head-icon {
     position: absolute;
     top: 10px;
     width: 40px;
@@ -125,6 +123,17 @@ section {
     padding-right: 20px;
 }
 
+main {
+    display: block;
+    background: #a9b2ba;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-same {
+    background: #171111;
+}
+
 #welcomeHead {
     align-self: end;
 }
@@ -150,17 +159,38 @@ p {
 }
 
 footer {
-    background: rgb(0,0,0);
     font-size: 1.11rem;
     text-align: center;
 }
 
 footer p {
-    margin-bottom: 0;
+    margin: 0;
 }
 
 #landing-page, section h2 {
     text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: 1.8rem;
+    color: white;
+}
+
+#category-list {
+    
+}
+
+#category-list, #btn{
+    font-size: 1.4rem;
+    padding: 2px;
 }
 
 #contact, #howItWorks {
@@ -169,11 +199,6 @@ footer p {
 }
 
 /* buttons */
-
-button {
-    padding: .5rem;
-    font-size: 1em;
-}
 
 #video {
     display: flex;
@@ -196,18 +221,13 @@ button {
         right: 25%;
     }
 
-    .mobile-li {
-        display: block;
-    }
-
     .open-nav {
         display: block !important;
     }
     
     .nav-on-click{
         height: 180px;
-    }
-    
+    }  
 }
 
 @media only screen and (min-width: 766px){
@@ -220,11 +240,11 @@ button {
         right: 0;
     }
 
-    .navLinks {
+    .nav-links {
         display: block !important;
     }
 
-    .navLinks li {
+    .nav-links li {
         display: inline-block;
     }
 
