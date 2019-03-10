@@ -17,6 +17,12 @@ body {
 
 h1,h2,h3,h4,h5,h6{
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+p, a{
+    font-family: 'Comfortaa';
 }
 
 .top-header {
@@ -35,7 +41,7 @@ ul.nav-links {
     text-align: center;
 }
 
- .sticky {
+.sticky {
     top: 0;
     background: rgba(0,0,0,0.7);
     height: 60px;
@@ -53,6 +59,15 @@ ul.nav-links {
 
 .mobile-navbar {
     display: block;
+}
+
+.rotate {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transition-property: all;
+    /* transition-duration: 1s; */
+    transition-timing-function: cubic-bezier(1, .45, .45, 1);
+    transition-delay: 0s;
 }
 
 span {
@@ -79,7 +94,7 @@ a {
     font-size: 1.6rem;
 } 
 
- .head-icon {
+.head-icon {
     position: absolute;
     top: 10px;
     width: 40px;
@@ -188,9 +203,13 @@ legend {
     
 }
 
-#category-list, #btn{
+#category-list, #keywordSearch, .btn{
     font-size: 1.4rem;
     padding: 2px;
+}
+
+#keywordSearch{
+    padding-left: 2%;
 }
 
 #contact, #howItWorks {
@@ -206,8 +225,9 @@ legend {
 }
 
 #video embed {
-    width: 320px;
-    height: 280px;
+    width: 98%;
+    height: 50vh;
+    max-width: 800px;
 }
 
 #contact {
@@ -223,14 +243,25 @@ legend {
 
     .open-nav {
         display: block !important;
+        
     }
     
     .nav-on-click{
         height: 180px;
     }  
+    #category-list, #keywordSearch, .btn{
+        font-size: 2.4rem;
+        padding: 4px;
+    }
 }
 
 @media only screen and (min-width: 766px){
+   /* form button{
+       font-size: .5rem;
+       padding: 10px;
+   } */
+   
+   
     .mobile-nav {
         display: none;
     }
