@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
     <header class="top-header">
       <img class="head-icon" src="images/spiral.svg" alt="Red animated spiral">
@@ -31,9 +29,8 @@
       </nav>
     </header>
     <section id="landing-page">
-      <h1 id="welcome-head">Welcome to the Rabbit Hole!</h1>
-      <!-- <hr class="headerRule"> -->
-      <h2 id="slogan">Let's get lost together.</h2>
+      <h1 id="welcome-head" class="both-headers">Welcome to the Rabbit Hole!</h1>
+      <h2 id="slogan" class="both-headers">Let's get lost together.</h2>
     </section>
     <section id="how-it-works" class="spc section-same">
       <h2>How It Works</h2>
@@ -43,47 +40,46 @@
       <div id="video">
         <embed src="https://www.youtube.com/v/EB0MhyGeCyw" wmode="transparent" type="application/x-shockwave-flash" allowfullscreen="true" title="Adobe Flash Player">
       </div>
-      <form id="dropdown">
-        <fieldset>
-          <legend>Pick a category or search a topic.</legend>
-          <div class="custom-dropdown">
-          <select id="category-list">
-            <option value="0">All videos</option>
-            <option value="1">Film &amp; Animation</option>
-            <option value="2">Autos &amp; Vehicles</option>
-            <option value="10">Music</option>
-            <option value="15">Pets &amp; Animals</option>
-            <option value="17">Sports</option>
-            <option value="20">Gaming</option>
-            <option value="23">Comedy</option>
-            <option value="24">Entertainment</option>
-            <option value="26">Howto &amp; Style</option>
-            <option value="28">Science &amp; Technology</option>
-          </select>
-          <button type="submit" class="btn">Random</button></div>
-        </fieldset>
-      </form>
-      <form id="search-bar">
-        <input type="text" id="keyword-search" placeholder="Search Topic" required>
-        <button  class="btn"><i class="fas fa-search"></i></button>
-      </form>
+      <div class="search-options">
+        <h3 class="form-header">pick a category or seach your favorite topic.</h3>
+        <form id="dropdown">
+            <div class="custom-dropdown">
+              <select id="category-list">
+                <option value="0">All videos</option>
+                <option value="1">Film &amp; Animation</option>
+                <option value="2">Autos &amp; Vehicles</option>
+                <option value="10">Music</option>
+                <option value="15">Pets &amp; Animals</option>
+                <option value="17">Sports</option>
+                <option value="20">Gaming</option>
+                <option value="23">Comedy</option>
+                <option value="24">Entertainment</option>
+                <option value="26">Howto &amp; Style</option>
+                <option value="28">Science &amp; Technology</option>
+              </select>
+            </div>
+            <button type="submit" class="btn">Random</button>
+        </form>
+        <form id="search-bar">
+          <input type="text" id="keyword-search" placeholder="Search Topic" required>
+          <button  class="btn"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
     </main>
     <section id="contact" class="spc section-same">
       <h2>Contact us with user feedback!</h2>
-      <button>Email</button>
+      <a href="mailto:krenneker16@gmail.com" class="email-button">message us!</a>
     </section>
-    <footer class="section-same">
+    <footer>
+      <h2>About The App.</h2>
       <p class="box">We're utilizing the YouTube data API to fetch content based on categories or user input from multiple endpoints. Thanks for visiting! Don't forget that you can submit feeback on your experience.</p>
+      <div class="icon-credit">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <script src="main.js"></script>
     <script src="searchEndpoint.js"></script>
     <script src="animate.js"></script>
-
-
-    <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-
 </body>
 
 </html>

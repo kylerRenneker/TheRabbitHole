@@ -28,14 +28,6 @@ $('.mobile-nav').on('click', function(){
     }
 })
 
-$('.nav-link').click(function(){
-    if($('.nav-links').hasClass('open-nav')){
-        $('.nav-links').removeClass('open-nav');
-        $('.top-header').removeClass('nav-on-click');
-        $('.mobile-nav').removeClass('rotate');
-    }
-})
-
 $("header").find("a").click(function(e) {
     e.preventDefault();
     var section = $(this).attr("href");
