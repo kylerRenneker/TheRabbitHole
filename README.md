@@ -21,7 +21,7 @@ What makes your project stand out?
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 ## API Reference
-We're using google's YouTube api. The reference documentaion for the endpoint used for the dropdown menu category based search can be found:<a href="https://developers.google.com/youtube/v3/docs/videos/list">Videos Endpoint</a>.
+We're using google's YouTube api. The reference documentaion for the endpoint used for the dropdown menu category based search can be found: <a href="https://developers.google.com/youtube/v3/docs/videos/list">Videos Endpoint</a>.
 
 
 The documentation for the endpoint that is used for the user input search can be found here: <a href="https://developers.google.com/youtube/v3/docs/search/list">Search Endpoint</a>.
