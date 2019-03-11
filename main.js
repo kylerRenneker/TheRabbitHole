@@ -24,16 +24,14 @@ function getNextVideoInfo(category) {
     chart: 'mostPopular',
     regionCode: 'US',
     key: apiKey,
-    maxResults: '1',
+    maxResults: '5',
     pageToken: token.nextPage
   }
 
   console.log(formatQueryParams(params));
   const queryString = formatQueryParams(params)
   const url = baseURL + '?' + queryString;
-
-  console.log(url);
-
+  
   fetch(url)
     .then(response => {
       if (response.ok) {
@@ -43,6 +41,9 @@ function getNextVideoInfo(category) {
       throw new Error(response.error.message);
     })
     .then(responseJson => {
+      if(token.nextPage==='CMMBEAA'){
+        token.nextPage = 'CAUQAQ';
+      }
       token.nextPage = responseJson.nextPageToken;
       getRandomId(responseJson)
     })
@@ -61,7 +62,6 @@ function getRandomId(responseJson) {
     id.newId = randomItem.id;
   }
   renderVideoHtml();
-  console.log(id.newId)
 }
 
 function renderVideoHtml() {
@@ -78,7 +78,6 @@ function loadNewVideo() {
 
 function onPageLoad() {
   loadNewVideo();
-  // loadSearchVideo();
 }
 
 $(onPageLoad)

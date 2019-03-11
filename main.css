@@ -325,10 +325,16 @@ legend {
     }
 }
 
-@media (min-width: 481px) and (max-width: 766px) {
+@media (min-width: 481px) and (max-width: 586px) {
     #video embed {
         width: 480px;
         height: 270px; /* 320px */
+    }
+}
+@media (min-width: 587px) and (max-width: 767px) {
+    #video embed {
+        width: 580px;
+        height: 320px; /* 320px */
     }
 }
 

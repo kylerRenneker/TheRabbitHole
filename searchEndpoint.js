@@ -6,15 +6,13 @@ function keywordSearch(keyword) {
         part: 'snippet',
         q: keyword,
         key: apiKey,
-        maxResults: '1',
+        maxResults: '5',
         type: 'video',
         pageToken: token.nextPage
     }
 
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
-
-    console.log(url);
 
     fetch(url)
         .then(response => {
@@ -34,17 +32,14 @@ function keywordSearch(keyword) {
         })
         .catch(err => {
             alert(`Something went wrong: ${err.message}`);
-            $('#keyword-search').val('');
-            console.log('anything');  
+            $('#keyword-search').val('');    
         })   
 }
 
 function loadSearchVideo() {
     $('#search-bar').on('submit', function(event) {
         event.preventDefault();
-        console.log('asdg');
         const keyword = $('#keyword-search').val();
-        console.log(keyword);
         keywordSearch(keyword);
     })
 }
