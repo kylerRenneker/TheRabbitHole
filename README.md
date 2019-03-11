@@ -4,10 +4,6 @@ Find semi-random youtube videos either based on all available categories of yout
 ## Motivation
 We wanted to randomize the youtube experience of the average user. If you don't have a specific idea as to what it is you want to watch, the random button can help. If you just want to watch popular music videos, there's a category for that. If you want to watch an obnoxious amount of youtube without having to actively look, we've solved that for you.
 
-
-## Screenshots
-Include logo/demo screenshot etc.
-
 ## Technologies Used
 - HTML
 - CSS
