@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header class="top-header">
+    <header class="top-header" role="banner">
       <img class="head-icon" src="images/spiral.svg" alt="Red animated spiral">
       <div class="mobile-nav">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <nav class="nav-bar">
+      <nav class="nav-bar" role="navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="#how-it-works">How It Works</a></li>
           <li><a class="nav-link" href="#video">Video</a></li>
@@ -36,13 +36,13 @@
       <h2>How It Works</h2>
       <p class="box">Scroll to the video embeded below or click the video link in the navigation bar. Choose a category from the dropdown menu and hit Random or type in a topic into the search bar and hit enter. Then get ready to go down the YouTube Rabbit Hole!</p>
     </section>
-    <main class="spc">
+    <main class="spc" role="main">
       <div id="video">
         <embed src="https://www.youtube.com/v/EB0MhyGeCyw" wmode="transparent" type="application/x-shockwave-flash" allowfullscreen="true" title="Adobe Flash Player">
       </div>
       <div class="search-options">
         <h3 class="form-header">pick a category or seach your favorite topic.</h3>
-        <form id="dropdown">
+        <form id="dropdown" role="search">
             <div class="custom-dropdown">
               <select id="category-list">
                 <option value="0">All videos</option>
@@ -60,7 +60,7 @@
             </div>
             <button type="submit" class="btn">Random</button>
         </form>
-        <form id="search-bar">
+        <form id="search-bar" role="search">
           <input type="text" id="keyword-search" placeholder="Search Topic" required>
           <button  class="btn"><i class="fas fa-search"></i></button>
         </form>
@@ -70,7 +70,7 @@
       <h2>Contact us with user feedback!</h2>
       <a href="mailto:krenneker16@gmail.com" class="email-button">message us!</a>
     </section>
-    <footer>
+    <footer role="contentinfo">
       <h2>About The App.</h2>
       <p class="box">We're utilizing the YouTube data API to fetch content based on categories or user input from multiple endpoints. Thanks for visiting! Don't forget that you can submit feeback on your experience.</p>
       <div class="icon-credit">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
