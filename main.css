@@ -135,7 +135,7 @@ a {
     padding-top: 10px;
 }
 
-#howItWorks h2 {
+#how-it-works h2 {
     margin-bottom: 40px;
 }
 
@@ -164,7 +164,7 @@ main {
     background: #171111;
 }
 
-#welcomeHead {
+#welcome-head {
     align-self: end;
     margin-bottom: 20px;
 }
@@ -173,9 +173,9 @@ main {
     align-self: start;
 }
 
-.headerRule {
+/* .headerRule {
     border-top: 1px solid #8c8b8b;
-}
+} */
 
 h1 {
     font-size: 4rem;
@@ -220,8 +220,8 @@ legend {
 }
 
 #category-list,
-#keywordSearch,
-#keywordSearch::placeholder{
+#keyword-search,
+#keyword-search::placeholder{
     background-color: var(--main-color);
     color: #fff;
     border-radius: 3px;
@@ -230,12 +230,12 @@ legend {
     border: none;
 }
 
-#category-list, #keywordSearch, .btn{
+#category-list, #keyword-search, .btn{
     font-size: 1.4rem;
     padding: 2px;
 }
 
-#contact, #howItWorks {
+#contact, #how-it-works {
     padding-top: 80px;
     padding-bottom: 80px;
 }
@@ -278,7 +278,7 @@ legend {
     .nav-on-click{
         height: 180px;
     }  
-    #category-list, #keywordSearch, .btn{
+    #category-list, #keyword-search, .btn{
         font-size: 2.0rem;
         padding: 4px;
     }
@@ -294,7 +294,7 @@ legend {
         display: none;
     }
 
-    nav.navbar {
+    nav.nav-bar {
         position: absolute;
         right: 0;
     }

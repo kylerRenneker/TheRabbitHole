@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>The Rabbit Hole</title>
   <link href="https://fonts.googleapis.com/css?family=Comfortaa|Poppins" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
   <link rel="stylesheet" href="normalize.css">
@@ -15,33 +16,28 @@
 
 <body>
     <header class="top-header">
-      <img class="head-icon" src="images/spiral.svg" alt="">
+      <img class="head-icon" src="images/spiral.svg" alt="Red animated spiral">
       <div class="mobile-nav">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <nav class="navbar">
+      <nav class="nav-bar">
         <ul class="nav-links">
-          <li><a class="nav-link" href="#howItWorks">How It Works</a></li>
+          <li><a class="nav-link" href="#how-it-works">How It Works</a></li>
           <li><a class="nav-link" href="#video">Video</a></li>
           <li><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
     <section id="landing-page">
-      <h1 id="welcomeHead">Welcome to the Rabbit Hole!</h1>
+      <h1 id="welcome-head">Welcome to the Rabbit Hole!</h1>
       <!-- <hr class="headerRule"> -->
       <h2 id="slogan">Let's get lost together.</h2>
     </section>
-    <section id="howItWorks" class="spc section-same">
+    <section id="how-it-works" class="spc section-same">
       <h2>How It Works</h2>
-      <p class="box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut luctus purus.
-        Fusce fermentum, nunc eu pellentesque ultricies, massa metus venenatis risus,
-        vitae condimentum magna dui vel diam. Integer elit ligula, facilisis id tellus
-        eu, euismod ultrices neque. Quisque eget consectetur felis, ac hendrerit urna.
-        Proin ac tellus cursus, imperdiet libero a, porttitor enim. In hac habitasse
-        platea dictumst. Mauris interdum ut quam sed volutpat.</p>
+      <p class="box">Scroll to the video embeded below or click the video link in the navigation bar. Choose a category from the dropdown menu and hit Random or type in a topic into the search bar and hit enter. Then get ready to go down the YouTube Rabbit Hole!</p>
     </section>
     <main class="spc">
       <div id="video">
@@ -67,9 +63,9 @@
           <button type="submit" class="btn">Random</button></div>
         </fieldset>
       </form>
-      <form id="searchbar">
-        <input type="text" id="keywordSearch" placeholder="Search Topic" required>
-        <button  class="btn">Search</button>
+      <form id="search-bar">
+        <input type="text" id="keyword-search" placeholder="Search Topic" required>
+        <button  class="btn"><i class="fas fa-search"></i></button>
       </form>
     </main>
     <section id="contact" class="spc section-same">
@@ -77,7 +73,7 @@
       <button>Email</button>
     </section>
     <footer class="section-same">
-      <p class="box">Thanks for visiting! Don't forget that you can submit feeback on your experience.</p>
+      <p class="box">We're utilizing the YouTube data API to fetch content based on categories or user input from multiple endpoints. Thanks for visiting! Don't forget that you can submit feeback on your experience.</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>

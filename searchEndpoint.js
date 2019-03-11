@@ -34,16 +34,16 @@ function keywordSearch(keyword) {
         })
         .catch(err => {
             alert(`Something went wrong: ${err.message}`);
-            $('#keywordSearch').val('');
+            $('#keyword-search').val('');
             console.log('anything');  
         })   
 }
 
 function loadSearchVideo() {
-    $('#searchbar').on('submit', function(event) {
+    $('#search-bar').on('submit', function(event) {
         event.preventDefault();
         console.log('asdg');
-        const keyword = $('#keywordSearch').val();
+        const keyword = $('#keyword-search').val();
         console.log(keyword);
         keywordSearch(keyword);
     })
