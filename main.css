@@ -20,13 +20,15 @@ body {
     /* background: #333133; */
     color: #dddddd;
     line-height: 1.6;
-    font-family: 'Comfortaa';
 }
 
 h1,h2,h3,h4,h5,h6{
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    
+    font-family: 'Sniglet', cursive;
+}
+
+p, a {
+    font-family: 'Comfortaa', sans-serif;
 }
 
 
@@ -49,7 +51,7 @@ ul.nav-links {
 
 .sticky {
     top: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.9);
     height: 60px;
     z-index: 1;
 } 
@@ -58,10 +60,10 @@ ul.nav-links {
     font-size: 20px;
     position: absolute;
     right: 22px;
-    top: 0;
+    top: 20px;
     width: 30px;
-    padding-top: 20px;
     transition: all 260ms ease-in;
+    
 }
 
 .mobile-navbar {
@@ -69,9 +71,9 @@ ul.nav-links {
 }
 
 .rotate {
+    /* transform-origin: center; */
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
- 
 }
 
 span {
@@ -94,7 +96,7 @@ a {
 .nav-link {
     text-decoration: none;
     color: var(--main-color);
-    margin-right: 10px;
+    margin-right: 30px;
     font-size: 1.6rem;
 } 
 
@@ -103,7 +105,7 @@ a {
     top: 10px;
     width: 40px;
     height: 40px;
-    background-color: white;
+    color: red;
 }
 
 .nav-link:hover{
@@ -123,19 +125,29 @@ a {
     background-attachment: fixed;
 }
 
-#landing-page h2 {
-    position: relative;
+.box {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-#landing-page h2::before {
+#landing-page h2 {
+    position: relative;
+    padding-top: 10px;
+}
+
+#howItWorks h2 {
+    margin-bottom: 40px;
+}
+
+/* #landing-page h2::before {
     content: '';
     position: absolute;
     left: 0;
     top: -10px;
     height: 2px;
     width: 100%;
-    background-image: linear-gradient(to right, transparent 0%, #000 20%, #000 50%, #000 80%, transparent 100%);
-}
+    background-image: linear-gradient(to right, transparent 0%, #dddddd 20%, #f7b733 50%, #dddddd 80%, transparent 100%);
+} */
 
 section {
     padding-left: 20px;
@@ -154,6 +166,7 @@ main {
 
 #welcomeHead {
     align-self: end;
+    margin-bottom: 20px;
 }
 
 #slogan {
@@ -217,17 +230,14 @@ legend {
     border: none;
 }
 
-
-
 #category-list, #keywordSearch, .btn{
     font-size: 1.4rem;
     padding: 2px;
 }
 
-
 #contact, #howItWorks {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 /* buttons */
@@ -248,6 +258,7 @@ legend {
 }
 
 @media only screen and (max-width: 766px){
+
     .mobile-nav-links{
         position: absolute;
         top: 50px;
@@ -297,17 +308,20 @@ legend {
     }
    
 }
-@media (min-width: 992px) {
-    #video embed {
-        width: 960px;
-        height: 540px; /* 720px */
+
+@media only screen and (min-width: 1024px) {
+    h1 {
+        font-size: 7rem;
+    }
+    h2 {
+        font-size: 4rem;
     }
 }
 
-@media (min-width: 767px) and (max-width: 991px) {
+@media (max-width: 480px) {
     #video embed {
-        width: 640px;
-        height: 360px; /* 480px */
+        width: 300px;
+        height: 169px; /* 225px */
     }
 }
 
@@ -318,9 +332,16 @@ legend {
     }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 768px) and (max-width: 991px) {
     #video embed {
-        width: 300px;
-        height: 169px; /* 225px */
+        width: 640px;
+        height: 360px; /* 480px */
+    }
+}
+
+@media (min-width: 992px) {
+    #video embed {
+        width: 960px;
+        height: 540px; /* 720px */
     }
 }

@@ -25,6 +25,12 @@ $('.mobile-nav').on('click', function(){
         $('.top-header').addClass('nav-on-click');
         $('.mobile-nav').addClass('rotate')
         $('.nav-links').addClass('mobile-nav-links');
-        // $('.navLinks li').addClass('mobile-li');
     }
 })
+
+$("header").find("a").click(function(e) {
+    e.preventDefault();
+    var section = $(this).attr("href");
+    $("html, body").animate({
+        scrollTop: $(section).offset().top}, 'slow');
+});
