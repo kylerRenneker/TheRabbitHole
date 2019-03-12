@@ -4,10 +4,10 @@ Find semi-random youtube videos either based on all available categories of yout
 ## Motivation
 We wanted to randomize the youtube experience of the average user. If you don't have a specific idea as to what it is you want to watch, the random button can help. If you just want to watch popular music videos, there's a category for that. If you want to watch an obnoxious amount of youtube without having to actively look, we've solved that for you.
 
-
 ## Screenshots
 <img src="images/desktop-view2.JPG" alt="Desktop view" height="300px">
 <img src="images/mobile-view.JPG" alt="Phone view" height="300px">
+
 
 ## Technologies Used
 - HTML
@@ -20,16 +20,16 @@ Multiple sources from which to pull random video content from YouTube.
 
 ## Code Example
 This is our function that randomizes the videos that are returned from the api call and rendered for the user.
+
 <pre><code>
-function getRandomId(responseJson) 
-    { console.log(responseJson); 
+function getRandomId(responseJson) { 
+    console.log(responseJson); 
     let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)]; 
         if(responseJson.kind === 'youtube#searchListResponse'){ 
             id.newId = randomItem.id.videoId; 
         } else { id.newId = randomItem.id; } 
     renderVideoHtml(); }
 </code></pre>
-
 
 
 ## API Reference
