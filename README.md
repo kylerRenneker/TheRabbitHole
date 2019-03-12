@@ -6,7 +6,8 @@ We wanted to randomize the youtube experience of the average user. If you don't 
 
 
 ## Screenshots
-Include logo/demo screenshot etc.
+<img src="images/desktop-view2.JPG" alt="Desktop view" height="300px">
+<img src="images/mobile-view.JPG" alt="Phone view" height="300px">
 
 ## Technologies Used
 - HTML
@@ -15,16 +16,30 @@ Include logo/demo screenshot etc.
 - jQuery
 
 ## Features
-What makes your project stand out?
+Multiple sources from which to pull random video content from YouTube.
 
 ## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+This is our function that randomizes the videos that are returned from the api call and rendered for the user.
+<pre><code>
+function getRandomId(responseJson) 
+    { console.log(responseJson); 
+    let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)]; 
+        if(responseJson.kind === 'youtube#searchListResponse'){ 
+            id.newId = randomItem.id.videoId; 
+        } else { id.newId = randomItem.id; } 
+    renderVideoHtml(); }
+</code></pre>
+
+
 
 ## API Reference
-We're using google's YouTube api. The reference documentaion for the endpoint used for the dropdown menu category based search can be found: <a href="https://developers.google.com/youtube/v3/docs/videos/list">Videos Endpoint</a>.
+We're using google's YouTube api. The reference documentation for the endpoint used for the dropdown menu category based search can be found: <a href="https://developers.google.com/youtube/v3/docs/videos/list">Videos Endpoint</a>.
 
 
 The documentation for the endpoint that is used for the user input search can be found here: <a href="https://developers.google.com/youtube/v3/docs/search/list">Search Endpoint</a>.
+
+## Challenges We Encountered
+There were some challenges in utilizing the videos endpoint for music content. We eventually came to the realization that YouTube's music content will only be able to be fetched and played on a deployed site.
 
 ## How to use?
 All a user needs to do is access the live-version of our site which can be found here: <a href="https://kylerrenneker.github.io/TheRabbitHole/">Live</a>, and utilize either the dropdown menu or the search bar to direct their search.
