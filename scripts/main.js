@@ -53,7 +53,6 @@ function getNextVideoInfo(category) {
 }
 
 function getRandomId(responseJson) {
-  console.log(responseJson);
   let randomItem = responseJson.items[Math.floor(Math.random() * responseJson.items.length)];
   if(responseJson.kind === 'youtube#searchListResponse'){
     id.newId = randomItem.id.videoId;

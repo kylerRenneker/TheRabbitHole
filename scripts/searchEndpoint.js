@@ -1,7 +1,6 @@
 const searchURL = 'https://www.googleapis.com/youtube/v3/search';
 
 function keywordSearch(keyword) {
-    console.log(keyword);
     const params = {
         part: 'snippet',
         q: keyword,

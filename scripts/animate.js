@@ -34,3 +34,12 @@ $("header").find("a").click(function(e) {
     $("html, body").animate({
         scrollTop: $(section).offset().top}, 'slow');
 });
+
+$("#keyword-search").on('focus', function () {
+	$(this).parent('label').addClass('active');
+});
+
+$("#keyword-search").on('blur', function () {
+	if($(this).val().length == 0)
+		$(this).parent('label').removeClass('active');
+});
